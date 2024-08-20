@@ -6,13 +6,15 @@ import {
   Post,
   Redirect,
   Render,
+  Req,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Product } from 'src/models/product.entity';
 import { ProductService } from 'src/models/products.service';
-
+import { ProductValidator } from 'src/validators/product.validator';
+import * as fs from 'node:fs';
 @Controller('/admin/products')
 export class AdminProductsController {
   constructor(private readonly productsService: ProductService) {}
@@ -29,14 +31,31 @@ export class AdminProductsController {
   @Post('/store')
   @UseInterceptors(FileInterceptor('image'))
   @Redirect('/admin/products')
-  async store(@Body() body, @UploadedFile() file: Express.Multer.File) {
-    const newProduct = new Product();
-    newProduct.setName(body.name);
-    newProduct.setDescription(body.description);
-    newProduct.setPrice(body.price);
-    newProduct.setImage(file.filename);
-    await this.productsService.createOrUpdate(newProduct);
-    console.log(file.filename);
+  async store(
+    @Req() request,
+    @Body() body,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    const toValidate: string[] = [
+      'name',
+      'description',
+      'price',
+      'imageCreate',
+    ];
+    const errors: string[] = ProductValidator.validate(body, file, toValidate);
+    if (errors.length > 0) {
+      if (file) {
+        fs.unlinkSync(file.path);
+      }
+      request.session.flashErrors = errors;
+    } else {
+      const newProduct = new Product();
+      newProduct.setName(body.name);
+      newProduct.setDescription(body.description);
+      newProduct.setPrice(body.price);
+      newProduct.setImage(file.filename);
+      await this.productsService.createOrUpdate(newProduct);
+    }
   }
   @Post('/:id')
   @Redirect('/admin/products')

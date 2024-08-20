@@ -10,6 +10,7 @@ import { join } from 'path/posix';
 import { UserService } from './models/user.service';
 import { AuthModule } from './auth/auth.module';
 import { User } from './models/user.entity';
+import { CartModule } from './cart/cart.module';
 @Global()
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { User } from './models/user.entity';
     TypeOrmModule.forFeature([Product, User]),
     AdminModule,
     AuthModule,
+    CartModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
     }),
