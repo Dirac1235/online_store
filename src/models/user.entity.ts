@@ -1,9 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Order } from './order.entity';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: string;
   @Column()
   name: string;
   @Column()
@@ -14,10 +15,10 @@ export class User {
   role: string;
   @Column()
   balance: number;
-  getId(): number {
+  getId(): string {
     return this.id;
   }
-  setId(id: number) {
+  setId(id: string) {
     this.id = id;
   }
   getName(): string {
@@ -49,5 +50,13 @@ export class User {
   }
   setBalance(balance: number) {
     this.balance = balance;
+  }
+  @OneToMany(() => Order, (order) => order.user)
+  orders: Order[];
+  getOrder(): Order[] {
+    return this.orders;
+  }
+  setOrder(orders: Order[]) {
+    this.orders = orders;
   }
 }

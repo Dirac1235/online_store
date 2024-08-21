@@ -31,4 +31,10 @@ export class UserService {
     }
     return null;
   }
+  findOne(id: string): Promise<User> {
+    return this.userRepository.findOne({ where: { id } });
+  }
+  updateBalance(id: string, balance: number) {
+    return this.userRepository.update(id, { balance: balance });
+  }
 }
