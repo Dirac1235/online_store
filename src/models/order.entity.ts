@@ -11,7 +11,7 @@ import { Item } from './item.entity';
 @Entity()
 export class Order {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: string;
   @Column()
   total: number;
   @CreateDateColumn()
@@ -22,10 +22,10 @@ export class Order {
     cascade: ['insert'],
   })
   items: Item[];
-  getId(): number {
+  getId(): string {
     return this.id;
   }
-  setId(id: number) {
+  setId(id: string) {
     this.id = id;
   }
   getTotal(): number {
@@ -34,8 +34,8 @@ export class Order {
   setTotal(total: number) {
     this.total = total;
   }
-  getDate(): Date {
-    return this.date;
+  getDate(): string {
+    return this.date.toISOString().split('T')[0];
   }
   setDate(date: Date) {
     this.date = date;

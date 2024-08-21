@@ -13,6 +13,7 @@ import { User } from './models/user.entity';
 import { CartModule } from './cart/cart.module';
 import { Order } from './models/order.entity';
 import { OrderService } from './models/orders.service';
+import { AccountModule } from './account/account.module';
 @Global()
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { OrderService } from './models/orders.service';
     AdminModule,
     AuthModule,
     CartModule,
+    AccountModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
     }),
