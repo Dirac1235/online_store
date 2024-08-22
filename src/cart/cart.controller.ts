@@ -16,7 +16,7 @@ import { Product } from 'src/models/product.entity';
 import { ProductService } from 'src/models/products.service';
 import { UserService } from 'src/models/user.service';
 
-Controller('/cart');
+@Controller('/cart')
 export class CartController {
   constructor(
     private readonly productsService: ProductService,
@@ -60,6 +60,12 @@ export class CartController {
   delete(@Req() request) {
     request.session.products = null;
   }
+  /**
+   *
+   * @param request
+   * @param response
+   * @returns
+   */
   @Get('/purchase')
   async purchase(@Req() request, @Res() response) {
     if (!request.session.user) {
@@ -95,6 +101,7 @@ export class CartController {
       viewData['title'] = 'Purchase - Online Store';
       viewData['subtitle'] = 'Purchase Status';
       viewData['orderId'] = order.getId();
+      console.log(viewData);
       return response.render('cart/purchase', { viewData: viewData });
     }
   }
