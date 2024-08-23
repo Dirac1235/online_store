@@ -1,9 +1,11 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
+  Put,
   Redirect,
   Render,
   Req,
@@ -15,10 +17,31 @@ import { Product } from 'src/models/product.entity';
 import { ProductService } from 'src/models/products.service';
 import { ProductValidator } from 'src/validators/product.validator';
 import * as fs from 'node:fs';
+import {
+  ApiOperation,
+  ApiProperty,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+
+class ProductDto {
+  @ApiProperty({ example: 'Camera' })
+  name: string;
+  @ApiProperty({ example: 'I is used to capture things' })
+  description: string;
+  @ApiProperty({ example: 500 })
+  price: number;
+  @ApiProperty({ example: 'img.jpg/png' })
+  image: File;
+}
+
 @Controller('/admin/products')
+@ApiTags('/admin/products')
 export class AdminProductsController {
   constructor(private readonly productsService: ProductService) {}
   @Get('/')
+  @ApiOperation({ summary: 'Views the admin products page' })
+  @ApiResponse({ status: 200, description: 'admin products page' })
   @Render('admin/products/index')
   async index() {
     const viewData = [];
@@ -29,11 +52,13 @@ export class AdminProductsController {
     };
   }
   @Post('/store')
+  @ApiOperation({ summary: 'Create a new product' })
+  @ApiResponse({ status: 201, description: 'The product has been created.' })
   @UseInterceptors(FileInterceptor('image'))
   @Redirect('/admin/products')
   async store(
     @Req() request,
-    @Body() body,
+    @Body() body: ProductDto,
     @UploadedFile() file: Express.Multer.File,
   ) {
     const toValidate: string[] = [
@@ -57,12 +82,16 @@ export class AdminProductsController {
       await this.productsService.createOrUpdate(newProduct);
     }
   }
-  @Post('/:id')
+  @Delete('/:id')
+  @ApiOperation({ summary: 'Deletes product' })
+  @ApiResponse({ status: 201, description: 'The product has been Deleted.' })
   @Redirect('/admin/products')
   async remove(@Param('id') id: string) {
     await this.productsService.remove(id);
   }
   @Get('/:id')
+  @ApiOperation({ summary: 'Views the Edit page' })
+  @ApiResponse({ status: 201, description: 'Edit Page' })
   @Render('admin/products/edit')
   async edit(@Param('id') id: string) {
     const viewData = [];
@@ -72,11 +101,13 @@ export class AdminProductsController {
       viewData: viewData,
     };
   }
-  @Post('/:id/update')
+  @Put('/:id/update')
+  @ApiOperation({ summary: 'Edits page' })
+  @ApiResponse({ status: 201, description: 'The product have been edited' })
   @UseInterceptors(FileInterceptor('image', { dest: './public/uploads' }))
   @Redirect('/admin/products')
   async update(
-    @Body() body,
+    @Body() body: ProductDto,
     @UploadedFile() file: Express.Multer.File,
     @Param('id') id: string,
   ) {

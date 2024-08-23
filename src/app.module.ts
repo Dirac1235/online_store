@@ -14,16 +14,18 @@ import { CartModule } from './cart/cart.module';
 import { Order } from './models/order.entity';
 import { OrderService } from './models/orders.service';
 import { AccountModule } from './account/account.module';
+import { ConfigModule } from '@nestjs/config';
 @Global()
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'online_store',
+      host: process.env.HOST,
+      port: parseInt(process.env.PORT),
+      username: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),

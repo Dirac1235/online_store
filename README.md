@@ -1,73 +1,148 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+### Online Store README.md Structure
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+---
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Online Store
 
-## Description
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Environment Setup](#environment-setup)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Folder Structure](#folder-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
+
+## Project Overview
+Provide a brief description of the project, its purpose, and its key objectives.
+
+**Example:**
+```
+This online store is a full-featured e-commerce platform built using NestJS. It provides users with a seamless shopping experience and includes an admin panel for managing products, orders, and users.
+```
+
+## Features
+List the main features of your online store.
+
+**Example:**
+```
+- User authentication and authorization
+- Product browsing and search
+- Shopping cart functionality
+- Order management
+- Admin dashboard for managing products and orders
+- Validation and error handling
+```
 
 ## Installation
+Step-by-step instructions to get the project running locally.
 
-```bash
-$ npm install
+**Example:**
+```
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/online-store.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd online-store
+   ```
+3. Install dependencies:
+   ```
+   npm install
+   ```
 ```
 
-## Running the app
+## Environment Setup
+Explain how to set up environment variables needed for the project.
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+**Example:**
+```
+Create a `.env` file in the root of the project and add the following variables:
+```
+```
+DATABASE_NAME=your_database_name
+DATABASE_USER=your_databse_username
+DATABASE_PASSWORD=your_database_password
+SECRET=your_session_secret
+PORT='3000'
+HOST='localhost'
 ```
 
-## Test
+## Usage
+Instructions on how to start and use the project.
 
-```bash
-# unit tests
-$ npm run test
+**Example:**
+```
+To start the development server, run:
+```
+```
+npm run start:dev
+```
+Then go to [http://localhost:3000](https://localhost:3000).
 
-# e2e tests
-$ npm run test:e2e
+## API Documentation
+Detail the available API endpoints with examples. This is especially important for backend projects.
 
-# test coverage
-$ npm run test:cov
+**Example:**
+```
+### Authentication
+- **POST** `/auth/login`: Logs in a user.
+- **POST** `/auth/register`: Registers a new user.
+
+### Products
+- **GET** `/products`: Retrieves a list of products.
+- **POST** `/admin/products`: Adds a new product (Admin only).
+
+### Orders
+- **POST** `/cart`: Adds items to the user's cart.
+- **POST** `/orders`: Places an order.
+
+Refer to the complete API documentation start the server and go to the route [http://localhost:3000/api](http://localhost:3000/api).
 ```
 
-## Support
+## Folder Structure
+Outline the structure of the project directories and files, explaining the purpose of each main folder.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+**Example:**
+```
+src/
+│
+├── account/              # User account related modules
+├── admin/                # Admin-related modules
+├── auth/                 # Authentication and authorization
+├── cart/                 # Shopping cart functionality
+├── models/               # Database models and services
+├── validators/           # Input validation logic
+├── app.controller.ts     # Main application controller
+├── app.module.ts         # Main application module
+├── main.ts               # Application entry point
+```
 
-## Stay in touch
+## Contributing
+Guidelines for contributing to the project.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+**Example:**
+```
+We welcome contributions! Please fork the repository and create a pull request with your changes. Ensure your code follows our style guidelines and includes necessary tests.
+```
 
-## License
+## Acknowledgements
+We would like to extend my gratitude to ALX for their invaluable support and resources that have greatly contributed to the development of this project.
 
-Nest is [MIT licensed](LICENSE).
+
+**Example:**
+```
+- [NestJS](https://nestjs.com/) for the backend framework.
+- [TypeORM](https://typeorm.io/) for the ORM.
+- [Node.js](https://nodejs.org/) for the runtime environment.
+- [Handlebars](https://handlebarsjs.com/) for the frontend.
+```
+
+
+

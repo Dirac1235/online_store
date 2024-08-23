@@ -8,14 +8,20 @@ import {
   Req,
   Res,
 } from '@nestjs/common';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from 'src/models/user.entity';
 import { UserService } from 'src/models/user.service';
 import { UserValidator } from 'src/validators/user.validator';
+import { UserDto } from './dto/register.dto';
+import { LoginDto } from './dto/login.dto';
 
 @Controller('/auth')
+@ApiTags('/auth')
 export class AuthController {
   constructor(private readonly userService: UserService) {}
   @Get('/register')
+  @ApiOperation({ summary: 'Views the Register page' })
+  @ApiResponse({ status: 200, description: 'Register page' })
   @Render('auth/register')
   register() {
     const viewData = [];
@@ -28,7 +34,9 @@ export class AuthController {
 
   @Post('/store')
   @Redirect('/')
-  async store(@Req() request, @Res() response, @Body() body) {
+  @ApiOperation({ summary: 'Registers new user' })
+  @ApiResponse({ status: 201, description: 'Registration successful' })
+  async store(@Req() request, @Res() response, @Body() body: UserDto) {
     const toValidate: string[] = ['name', 'email', 'password'];
     const errors: string[] = UserValidator.validate(body, toValidate);
     if (errors.length > 0) {
@@ -45,6 +53,8 @@ export class AuthController {
     }
   }
   @Get('/login')
+  @ApiOperation({ summary: 'Views the Login page' })
+  @ApiResponse({ status: 200, description: 'Login page' })
   @Render('auth/login')
   login() {
     const viewData = [];
@@ -56,7 +66,9 @@ export class AuthController {
   }
 
   @Post('/connect')
-  async connect(@Body() body, @Req() request, @Res() respose) {
+  @ApiOperation({ summary: 'Login to page' })
+  @ApiResponse({ status: 201, description: 'Login Successful' })
+  async connect(@Body() body: LoginDto, @Req() request, @Res() respose) {
     const email = body.email;
     const passWord = body.password;
     const user = await this.userService.login(email, passWord);
@@ -72,6 +84,8 @@ export class AuthController {
     }
   }
   @Get('/logout')
+  @ApiOperation({ summary: 'Logs out' })
+  @ApiResponse({ status: 201, description: 'Logout Successful' })
   @Redirect('/')
   logout(@Req() request) {
     request.session.user = null;

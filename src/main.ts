@@ -5,6 +5,7 @@ import * as hbsUtils from 'hbs-utils';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as session from 'express-session';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
@@ -14,7 +15,7 @@ async function bootstrap() {
   app.setViewEngine('hbs');
   app.use(
     session({
-      secret: 'nest-book',
+      secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
     }),
@@ -37,6 +38,14 @@ async function bootstrap() {
       res.redirect('/');
     }
   });
+  const config = new DocumentBuilder()
+    .setTitle('Online Store')
+    .setDescription('The OnlineStore API description')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
+
   await app.listen(3000);
 }
 

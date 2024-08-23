@@ -1,8 +1,12 @@
 import { Controller, Get, Render } from '@nestjs/common';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('/')
+@ApiTags('/')
 export class AppController {
   @Get('/')
+  @ApiOperation({ summary: 'Views Home Page' })
+  @ApiResponse({ status: 200, description: 'Home Page' })
   @Render('index')
   index() {
     return {
@@ -10,6 +14,8 @@ export class AppController {
     };
   }
   @Get('/about')
+  @ApiOperation({ summary: 'Views About Page' })
+  @ApiResponse({ status: 200, description: 'Views the About Page' })
   @Render('about')
   about() {
     const viewData = [];
