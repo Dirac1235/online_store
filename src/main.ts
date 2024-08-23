@@ -10,6 +10,12 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   hbs.registerPartials(join(__dirname, '..', 'views/layouts'));
+  hbs.registerHelper('multiply', (a: string, b: string) => {
+    const numA = parseFloat(a);
+    const numB = parseFloat(b);
+    return numA * numB;
+  });
+
   console.log(join(__dirname, '..', 'views/layouts'));
   hbsUtils(hbs).registerWatchedPartials(join(__dirname, '..', 'views/layouts'));
   app.setViewEngine('hbs');
@@ -39,8 +45,10 @@ async function bootstrap() {
     }
   });
   const config = new DocumentBuilder()
-    .setTitle('Online Store')
-    .setDescription('The OnlineStore API description')
+    .setTitle('Online Store API Documentation')
+    .setDescription(
+      "Welcome to the API Documentation for Online Store Services. Here you'll find all the information needed to interact with our online store's API, including endpoint descriptions, parameter details, and usage examples for seamless integration.",
+    )
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

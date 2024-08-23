@@ -82,7 +82,7 @@ export class AdminProductsController {
       await this.productsService.createOrUpdate(newProduct);
     }
   }
-  @Delete('/:id')
+  @Post('/:id')
   @ApiOperation({ summary: 'Deletes product' })
   @ApiResponse({ status: 201, description: 'The product has been Deleted.' })
   @Redirect('/admin/products')
@@ -101,7 +101,7 @@ export class AdminProductsController {
       viewData: viewData,
     };
   }
-  @Put('/:id/update')
+  @Post('/:id/update')
   @ApiOperation({ summary: 'Edits page' })
   @ApiResponse({ status: 201, description: 'The product have been edited' })
   @UseInterceptors(FileInterceptor('image', { dest: './public/uploads' }))

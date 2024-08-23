@@ -78,6 +78,7 @@ export class AuthController {
         name: user.getName(),
         role: user.getRole(),
       };
+      if (user.getRole() == 'admin') return respose.redirect('/admin');
       return respose.redirect('/');
     } else {
       return respose.redirect('/auth/login');

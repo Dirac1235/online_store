@@ -1,19 +1,21 @@
 {{#> app}}
 {{#*inline "content"}}
-<div class="row">
-  {{#each viewData.products}}
-  <div class="col-md-4 col-lg-3 mb-2">
-    <div class="card">
-      {{getImage}}
-      <img src="/uploads/{{getImage}}" class="card-img-top img-card">
-      <div class="card-body text-center">
-        {{getid}}
-        <a href="/products/{{getId}}"
-          class="btn bg-primary text-white">{{getName}}</a>
+<div class="container">
+  <h1 class="mb-4">Products</h1>
+  <div class="row">
+    {{#each viewData.products}}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="/uploads/{{getImage}}" class="card-img-top" alt="{{getName}}">
+        <div class="card-body">
+          <h5 class="card-title">{{getName}}</h5>
+          <p class="card-text">Description of {{getName}}.</p>
+          <a href="/products/{{getId}}" class="btn btn-primary">Buy Now</a>
+        </div>
       </div>
     </div>
+    {{/each}}
   </div>
-  {{/each}}
 </div>
 {{/inline}}
 {{/app}}

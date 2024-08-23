@@ -4,6 +4,7 @@ import { AdminProductsController } from './admin.products.controller';
 import { MulterModule } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { AdminOrdersController } from './admin.orders';
 
 @Module({
   imports: [
@@ -20,6 +21,10 @@ import { extname } from 'path';
       }),
     }),
   ],
-  controllers: [AdminController, AdminProductsController],
+  controllers: [
+    AdminController,
+    AdminProductsController,
+    AdminOrdersController,
+  ],
 })
 export class AdminModule {}

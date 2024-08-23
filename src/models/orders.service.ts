@@ -13,6 +13,9 @@ export class OrderService {
   createOrUpdate(order: Order): Promise<Order> {
     return this.ordersRepository.save(order);
   }
+  findAll(): Promise<Order[]> {
+    return this.ordersRepository.find();
+  }
   findByUserId(id: string): Promise<Order[]> {
     return this.ordersRepository.find({
       where: {
