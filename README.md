@@ -13,31 +13,39 @@
 - [API Documentation](#api-documentation)
 - [Folder Structure](#folder-structure)
 - [Contributing](#contributing)
-- [License](#license)
 - [Acknowledgements](#acknowledgements)
 
 ---
 
 ## Project Overview
-Provide a brief description of the project, its purpose, and its key objectives.
 
-**Example:**
-```
-This online store is a full-featured e-commerce platform built using NestJS. It provides users with a seamless shopping experience and includes an admin panel for managing products, orders, and users.
-```
+This online store is a robust e-commerce platform built using NestJS, designed to cater to the needs of both customers and administrators. The primary purpose of the project is to offer users a seamless and secure shopping experience while enabling administrators to efficiently manage products, orders, and user data. Key objectives include ensuring a responsive and user-friendly interface, implementing secure payment processing, and providing tools for managing the store's inventory and customer interactions. The platform is designed to be scalable and easy to maintain, making it a versatile solution for online retail businesses.
 
-## Features
-List the main features of your online store.
 
-**Example:**
-```
-- User authentication and authorization
-- Product browsing and search
-- Shopping cart functionality
-- Order management
-- Admin dashboard for managing products and orders
-- Validation and error handling
-```
+### Main Features of the Online Store
+
+1. **User Authentication and Authorization**
+   - Secure user registration and login.
+   - Role-based access control (e.g., Admin, Customer).
+
+2. **Product Browsing and Search**
+   - View products with detailed descriptions, images, and prices.
+   - Search and filter products by categories, price range, and other criteria.
+
+3. **Shopping Cart Functionality**
+   - Add products to the shopping cart.
+   - Update product quantities and remove items from the cart.
+   - View the total cost before checkout.
+
+4. **Order Management**
+   - Place orders and view order history.
+   - Track the status of current orders.
+   - Admin can view and manage all customer orders.
+
+5. **Admin Dashboard**
+   - Manage products (add, update, delete).
+   - View and manage customer orders.
+   - Monitor inventory levels and sales performance.
 
 ## Installation
 Step-by-step instructions to get the project running locally.
@@ -125,12 +133,7 @@ src/
 ```
 
 ## Contributing
-Guidelines for contributing to the project.
-
-**Example:**
-```
-We welcome contributions! Please fork the repository and create a pull request with your changes. Ensure your code follows our style guidelines and includes necessary tests.
-```
+I welcome contributions! Please fork the repository and create a pull request with your changes. 
 
 ## Acknowledgements
 We would like to extend my gratitude to ALX for their invaluable support and resources that have greatly contributed to the development of this project.
