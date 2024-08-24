@@ -6,7 +6,7 @@
 
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [Features](#features)
+- [Features](#Main-Features-of-the-Online-Store)
 - [Installation](#installation)
 - [Environment Setup](#environment-setup)
 - [Usage](#usage)
