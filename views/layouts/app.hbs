@@ -23,9 +23,9 @@
     {{/if}}
   </head>
   <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary-subtle sticky-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Online Store</a>
+        <a class="navbar-brand fs-5 fw-medium" href="#">Online Store</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -35,30 +35,30 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active  fs-5" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/products">Products</a>
+              <a class="nav-link active fs-5" href="/products">Products</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/cart">Cart</a>
+              <a class="nav-link active fs-5" href="/cart">Cart</a>
             </li>
             {{#if session.user}}
-            <li class="nav-item">
+            <li class="nav-item fs-5">
               <a class="nav-link active" href="/account/orders">My Orders</a>
             </li>
             {{/if}}
-            <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+            <li class="nav-item ">
+              <a class="nav-link active fs-5" href="/about">About</a>
             </li>
           
           </ul>
             {{#if session.user}}
-            <a class="nav-link active" href="/auth/logout">Logout
+            <a class="nav-link active  fs-5" href="/auth/logout">Logout
               ({{session.user.name}})</a>
             {{else}}
-            <a class="nav-link active p-2" href="/auth/login">Login</a>
-            <a class="nav-link active p-3" href="/auth/register">Register</a>
+            <a class="nav-link active p-2  fs-5" href="/auth/login">Login</a>
+            <a class="nav-link active p-3  fs-5" href="/auth/register">Register</a>
             {{/if}}
         </div>
       </div>
@@ -71,7 +71,7 @@
     </main>
     
     <!-- Footer -->
-    <footer class="bg-light py-3 mt-auto">
+    <footer class="bg-primary-subtle py-3 mt-auto">
       <div class="container text-center">
         <p>&copy; 2024 Online Store. All Rights Reserved.</p>
         <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a> | <a href="/contact">Contact Us</a></p>
