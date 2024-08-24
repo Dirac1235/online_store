@@ -126,7 +126,6 @@ I welcome contributions! Please fork the repository and create a pull request wi
 I would like to extend my gratitude to ALX for their invaluable support and resources that have greatly contributed to the development of this project.
 
 
-**Example:**
 ```
 - [NestJS](https://nestjs.com/) for the backend framework.
 - [TypeORM](https://typeorm.io/) for the ORM.
