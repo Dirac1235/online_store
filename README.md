@@ -48,28 +48,20 @@ This online store is a robust e-commerce platform built using NestJS, designed t
    - Monitor inventory levels and sales performance.
 
 ## Installation
-Step-by-step instructions to get the project running locally.
 
-**Example:**
-```
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/online-store.git
+   git clone https://github.com/Dirac1235/online_store.git
    ```
-2. Navigate to the project directory:
+2. Navigate to the project directory
    ```
    cd online-store
    ```
 3. Install dependencies:
    ```
    npm install
-   ```
-```
-
 ## Environment Setup
-Explain how to set up environment variables needed for the project.
 
-**Example:**
 ```
 Create a `.env` file in the root of the project and add the following variables:
 ```
@@ -83,21 +75,18 @@ HOST='localhost'
 ```
 
 ## Usage
-Instructions on how to start and use the project.
 
-**Example:**
-```
+
 To start the development server, run:
-```
+
 ```
 npm run start:dev
 ```
+
 Then go to [http://localhost:3000](https://localhost:3000).
 
 ## API Documentation
-Detail the available API endpoints with examples. This is especially important for backend projects.
 
-**Example:**
 ```
 ### Authentication
 - **POST** `/auth/login`: Logs in a user.
@@ -111,13 +100,11 @@ Detail the available API endpoints with examples. This is especially important f
 - **POST** `/cart`: Adds items to the user's cart.
 - **POST** `/orders`: Places an order.
 
-Refer to the complete API documentation start the server and go to the route [http://localhost:3000/api](http://localhost:3000/api).
 ```
+Refer to the complete API documentation start the server and go to the route [http://localhost:3000/api](http://localhost:3000/api).
 
 ## Folder Structure
-Outline the structure of the project directories and files, explaining the purpose of each main folder.
 
-**Example:**
 ```
 src/
 │
@@ -136,7 +123,7 @@ src/
 I welcome contributions! Please fork the repository and create a pull request with your changes. 
 
 ## Acknowledgements
-We would like to extend my gratitude to ALX for their invaluable support and resources that have greatly contributed to the development of this project.
+I would like to extend my gratitude to ALX for their invaluable support and resources that have greatly contributed to the development of this project.
 
 
 **Example:**
