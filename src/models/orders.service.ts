@@ -14,7 +14,9 @@ export class OrderService {
     return this.ordersRepository.save(order);
   }
   findAll(): Promise<Order[]> {
-    return this.ordersRepository.find();
+    return this.ordersRepository.find({
+      relations: ['items', 'items.product'],
+    });
   }
   findByUserId(id: string): Promise<Order[]> {
     return this.ordersRepository.find({

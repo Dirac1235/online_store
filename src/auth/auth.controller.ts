@@ -33,7 +33,7 @@ export class AuthController {
   }
 
   @Post('/store')
-  @Redirect('/')
+  @Redirect('/auth/login')
   @ApiOperation({ summary: 'Registers new user' })
   @ApiResponse({ status: 201, description: 'Registration successful' })
   async store(@Req() request, @Res() response, @Body() body: UserDto) {
