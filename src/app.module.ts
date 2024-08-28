@@ -1,6 +1,5 @@
 import { Global, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { ProductsController } from './products.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './models/product.entity';
 import { ProductService } from './models/products.service';
@@ -15,6 +14,7 @@ import { Order } from './models/order.entity';
 import { OrderService } from './models/orders.service';
 import { AccountModule } from './account/account.module';
 import { ConfigModule } from '@nestjs/config';
+import { ProductsModule } from './product/products.module';
 @Global()
 @Module({
   imports: [
@@ -33,12 +33,13 @@ import { ConfigModule } from '@nestjs/config';
     AdminModule,
     AuthModule,
     CartModule,
+    ProductsModule,
     AccountModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
     }),
   ],
-  controllers: [AppController, ProductsController],
+  controllers: [AppController],
   providers: [ProductService, UserService, OrderService],
   exports: [ProductService, UserService, OrderService],
 })
